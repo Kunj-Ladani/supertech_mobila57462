@@ -128,7 +128,16 @@
                                             <tr class="order-total">
                                                 <td style="padding: 20px;">Pincode</td>
                                                 <td class="order-total-amount">
-                                                    <input type="text" name="o_pincode" class="form-control" id="" style="border: 1px solid black;" required placeholder="Pincode">
+                                                    <input type="text"
+                                                           name="o_pincode"
+                                                           class="form-control"
+                                                           id=""
+                                                           maxlength="6"
+                                                           pattern="[0-9]{6}"
+                                                           onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                                                           style="border: 1px solid black;"
+                                                           required
+                                                           placeholder="Pincode">
                                                 </td>
                                             </tr>
                                             <tr class="order-total">

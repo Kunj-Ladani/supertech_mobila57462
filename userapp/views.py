@@ -566,6 +566,26 @@ def umycart(request):
              o_pincode = request.POST.get("o_pincode")
              o_status = "Pending"
              od_status = "Deactive"
+
+             # ---------------- PINCODE VALIDATION ----------------
+             if not o_pincode.isdigit():
+                 script = """
+                 <script>
+                     alert('Pincode must contain only numbers');
+                     window.location.href='/umycart/';
+                 </script>
+                 """
+                 return HttpResponse(script)
+
+             if len(o_pincode) != 6:
+                 script = """
+                 <script>
+                     alert('Pincode must be 6 digits');
+                     window.location.href='/umycart/';
+                 </script>
+                 """
+                 return HttpResponse(script)
+             # ----------------------------------------------------
  
              cdate = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
@@ -758,7 +778,5 @@ def umycart(request):
     except Exception as e:
         print("Wishlist Error:", e)
         return redirect("home")
-    
-
 
 
